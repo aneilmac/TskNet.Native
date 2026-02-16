@@ -8,7 +8,7 @@ The following notices and license texts apply to those components.
 ## AFFLIB
 
 License: BSD 4-Clause (Original) and BSD 3-Clause  
-Copyright: 2005-2006 Basis Technology, Inc. 2005-2013 Simson L. Garfinkel <simsong@acm.org> 2014-2025 Phillip Hellewell <sshock@gmail.com>  
+Copyright: 2005-2006 Basis Technology, Inc. 2005-2013 Simson L. Garfinkel <simsong@acm.org> 2014-2025 Phillip Hellewell <sshock@gmail.com>    
 Project: https://github.com/sshock/AFFLIBv3
 
 Licence text:  
