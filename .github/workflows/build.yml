@@ -53,23 +53,23 @@ jobs:
         uses: actions/download-artifact@v7
         with:
           merge-multiple: true
-          path: build
+          path: artifacts
       - name: install_dependencies
         run: sudo apt-get -y install libcurl4-openssl-dev
       - name: Generate sleuthkit
         run: |
           ./bootstrap
-          ./configure --prefix=${{ github.workspace }}/build \ 
+          ./configure --prefix=${{ github.workspace }}/artifacts \ 
                       --disable-java \
-                      --with-afflib=${{ github.workspace }}/build \
-                      --with-libbfio=${{ github.workspace }}/build \
-                      --with-libvhdi=${{ github.workspace }}/build \
-                      --with-libvmdk=${{ github.workspace }}/build \
-                      --with-libvslvm=${{ github.workspace }}/build
+                      --with-afflib=${{ github.workspace }}/artifacts \
+                      --with-libbfio=${{ github.workspace }}/artifacts \
+                      --with-libvhdi=${{ github.workspace }}/artifacts \
+                      --with-libvmdk=${{ github.workspace }}/artifacts \
+                      --with-libvslvm=${{ github.workspace }}/artifacts
           make
           make install
       - name: Upload nupkg
         uses: actions/upload-artifact@v6
         with:
           name: sleuthkit-lib
-          path: ${{ github.workspace }}/build
+          path: ${{ github.workspace }}/artifacts
