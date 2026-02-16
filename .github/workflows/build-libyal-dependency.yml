@@ -28,7 +28,7 @@ jobs:
         run: |
           ./synclibs.sh 
           ./autogen.sh
-          ./configure --prefix=${{ github.workspace }}/build
+          ./configure --prefix=${{ github.workspace }}/build --disable-static
           make
           make install
       - uses: actions/upload-artifact@v6
