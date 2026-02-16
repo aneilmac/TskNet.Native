@@ -1,4 +1,4 @@
-﻿name: Build AFF Lib
+name: Build AFF Lib
 on:
   workflow_call:
     inputs:
@@ -21,7 +21,7 @@ jobs:
              ./configure --prefix=${{ github.workspace }}/build
              make
              make install
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v6
         with:
           name: ${{ inputs.artifact-name }}
           path: ${{ github.workspace }}/build
