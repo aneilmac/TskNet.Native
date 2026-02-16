@@ -24,5 +24,10 @@
     <ItemGroup>
         <None Include="$(ROOTDIR)README.md" Pack="true" PackagePath="\"/>
         <None Include="$(ROOTDIR)LICENSE.txt" Pack="true" PackagePath="\"/>
+        <None Include="$(LIBDIR)artifacts\lib\*.so" TargetPath="runtimes\linux-x64\native\" Pack="true" PackagePath="runtimes\linux-x64\native">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+            <Visible>false</Visible>
+            <PackageCopyToOutput>true</PackageCopyToOutput>
+        </None>
     </ItemGroup>
 </Project>

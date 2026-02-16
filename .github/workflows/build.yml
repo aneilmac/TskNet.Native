@@ -71,5 +71,34 @@ jobs:
       - name: Upload nupkg
         uses: actions/upload-artifact@v6
         with:
-          name: sleuthkit-lib
+          name: libtsk
           path: ${{ github.workspace }}/artifacts
+  build-nupkg:
+    needs: [build-sleuthkit]
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ ubuntu-latest ]
+        configuration: [ Release ]
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - name: Download artifacts
+        uses: actions/download-artifact@v7
+        with:
+          merge-multiple: true
+          path: artifacts
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v5
+      - name: Restore dependencies
+        run: dotnet restore
+      - name: Build
+        run: dotnet build -c ${{ matrix.configuration }}
+      - name: Publish
+        run: dotnet pack -c ${{ matrix.configuration }} --no-build src/TskNet.Native
+      - name: Upload nupkg
+        uses: actions/upload-artifact@v6
+        with:
+          name: TskNet.Native-nupkg
+          path: TskNet.Native/bin/Release/TskNet.Native.*.nupkg
