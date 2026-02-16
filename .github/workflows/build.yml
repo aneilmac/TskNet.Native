@@ -60,7 +60,7 @@ jobs:
         run: |
           ./bootstrap
           ./configure --prefix=${{ github.workspace }}/artifacts \ 
-                      --disable-java \
+                      --disable-static --enabled-shared \
                       --with-afflib=${{ github.workspace }}/artifacts \
                       --with-libbfio=${{ github.workspace }}/artifacts \
                       --with-libvhdi=${{ github.workspace }}/artifacts \
