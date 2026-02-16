@@ -59,7 +59,8 @@ jobs:
       - name: Generate sleuthkit
         run: |
           ./bootstrap
-          ./configure --prefix=${{ github.workspace }}/artifacts \ 
+          ./configure --prefix=${{ github.workspace }}/artifacts \
+                      --disable-java --enable-shared --disable static \
                       --with-afflib=${{ github.workspace }}/artifacts \
                       --with-libbfio=${{ github.workspace }}/artifacts \
                       --with-libvhdi=${{ github.workspace }}/artifacts \
