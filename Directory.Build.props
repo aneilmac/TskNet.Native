@@ -2,6 +2,7 @@
 <Project>
     <PropertyGroup>
         <RootDir>$(MSBuildThisFileDirectory)</RootDir>
+        <LibDir>$(RootDir)libtsk\lib\</LibDir>
         <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     </PropertyGroup>
 </Project>
