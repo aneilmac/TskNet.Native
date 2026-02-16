@@ -8,9 +8,9 @@
         <_Year>$([System.DateTime]::Now.ToString('yyyy'))</_Year>
         <Authors>aneilmac</Authors>
         <Copyright>Copyright © 2026-$(_Year) $(Authors)</Copyright>
-        <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
         <PackageTags>Sleuthkit;libtsk</PackageTags>
         <Description>libtsk Native library</Description>
+        <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <RepositoryUrl>https://github.com/aneilmac/TskNet.Native</RepositoryUrl>
         <PackageProjectUrl>https://github.com/aneilmac/TskNet.Native</PackageProjectUrl>
@@ -23,12 +23,18 @@
     </ItemGroup>
     <ItemGroup>
         <None Include="$(ROOTDIR)README.md" Pack="true" PackagePath="\"/>
-        <None Include="$(ROOTDIR)LICENSE.txt" Pack="true" PackagePath="\"/>
+        <None Include="$(ROOTDIR)LICENSE.md" Pack="true" PackagePath="\"/>
         <None Include="$(LIBDIR)*.so" Pack="true" PackagePath="runtimes\linux-x64\native">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
             <Visible>false</Visible>
             <PackageCopyToOutput>true</PackageCopyToOutput>
             <TargetPath>runtimes\linux-x64\native\%(Filename)%(Extension)</TargetPath>
+        </None>
+        <None Include="$(ROTODIR)licenses" Pack="true" PackagePath="licenses">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+            <Visible>false</Visible>
+            <PackageCopyToOutput>true</PackageCopyToOutput>
+            <TargetPath>licenses\%(Filename)%(Extension)</TargetPath>
         </None>
     </ItemGroup>
 </Project>
