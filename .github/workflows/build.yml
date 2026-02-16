@@ -60,8 +60,7 @@ jobs:
         run: |
           ./bootstrap
           ./configure --prefix=${{ github.workspace }}/build \ 
-                      --enable-shared=true --enable-static=false \
-                      --disable-java \
+                      --enable-shared --disable-static --disable-java \
                       --with-afflib=${{ github.workspace }}/build \
                       --with-libbfio=${{ github.workspace }}/build \
                       --with-libvhdi=${{ github.workspace }}/build \
