@@ -45,7 +45,7 @@ jobs:
           repository: sleuthkit/sleuthkit
           ref: sleuthkit-4.14.0
       - name: Download artifacts
-        uses: actions/download-artifact@v5
+        uses: actions/download-artifact@v7
         with:
           merge-multiple: true
           path: dependencies
