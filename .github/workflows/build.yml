@@ -1,0 +1,70 @@
+name: Tsk-Net - Build & Pack
+
+on: [push]
+env:
+  BUILD_NUMBER: ${{ github.run_number }}
+jobs:
+  build-aff:
+    uses: ./.github/workflows/build-aff-lib.yml
+    with:
+      artifact-name: libaff
+  build-vhdi:
+    uses: ./.github/workflows/build-libyal-dependency.yml
+    with:
+      artifact-name: libvhdi
+      repo-name: libyal/libvhdi
+      repo-ref: 20251119
+      dependencies: autoconf automake autopoint build-essential libfuse3-dev
+  build-vmdk:
+    uses: ./.github/workflows/build-libyal-dependency.yml
+    with:
+      artifact-name: libvmdk
+      repo-name: libyal/libvmdk
+      repo-ref: 20240510
+      dependencies: autoconf automake autopoint build-essential libfuse3-dev
+  build-slvm:
+    uses: ./.github/workflows/build-libyal-dependency.yml
+    with:
+      artifact-name: libslvm
+      repo-name: libyal/libvslvm
+      repo-ref: 20240504
+      dependencies: autoconf automake autopoint libtool pkg-config
+  build-bfio:
+    uses: ./.github/workflows/build-libyal-dependency.yml
+    with:
+      artifact-name: libbfio
+      repo-name: libyal/libbfio
+      repo-ref: 20240414
+      dependencies: autoconf automake autopoint libtool pkg-config
+  build-sleuthkit:
+    needs: [build-aff, build-vhdi, build-vmdk, build-slvm, build-bfio]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          repository: sleuthkit/sleuthkit
+          ref: sleuthkit-4.14.0
+      - name: Download artifacts
+        uses: actions/download-artifact@v5
+        with:
+          merge-multiple: true
+          path: dependencies
+      - name: install_dependencies
+        run: sudo apt-get -y install libcurl4-openssl-dev
+      - name: Generate sleuthkit
+        working-directory: ./sleuthkit
+        run: |
+          ./bootstrap
+          ./configure --prefix=${{ github.workspace }}/build \
+                      --with-afflib=${{ github.workspace }}/dependencies \
+                      --with-libbfio=${{ github.workspace }}/dependencies \
+                      --with-libvhdi=${{ github.workspace }}/dependencies \
+                      --with-libvmdk=${{ github.workspace }}/dependencies \
+                      --with-libvslvm=${{ github.workspace }}/dependencies
+          make
+          make install
+      - name: Upload nupkg
+        uses: actions/upload-artifact@v6
+        with:
+          name: sleuthkit-lib
+          path: ${{ github.workspace }}/build

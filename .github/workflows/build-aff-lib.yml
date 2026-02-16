@@ -1,0 +1,28 @@
+﻿name: Build AFF Lib
+on:
+  workflow_call:
+    inputs:
+      artifact-name:
+        required: true
+        type: string
+jobs:
+  run-make:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          repository: sshock/AFFLIBv3
+          ref: v3.7.22
+      - name: install_dependencies
+        run: sudo apt install chrpath libcurl4-openssl-dev libexpat1-dev libfuse-dev libssl-dev openssl zlib1g-dev
+      - name: Generate libaff 
+        run: | 
+             ./bootstrap.sh
+             ./configure --prefix=${{ github.workspace }}/build
+             make
+             make install
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ${{ inputs.artifact-name }}
+          path: ${{ github.workspace }}/build
+          retention-days: 1

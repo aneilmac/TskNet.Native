@@ -1,0 +1,38 @@
+﻿name: Build Libyal dependency
+on:
+  workflow_call:
+    inputs:
+      artifact-name:
+        required: true
+        type: string
+      repo-name:
+        required: true
+        type: string
+      repo-ref:
+        required: true
+        type: string
+      dependencies:
+        required: true
+        type: string
+jobs:
+  run-make:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          repository:  ${{ inputs.repo-name }}
+          ref: ${{ inputs.repo-ref }}
+      - name: install_dependencies
+        run: sudo apt-get -y install ${{ inputs.dependencies }}
+      - name: Generate
+        run: |
+          ./synclibs.sh 
+          ./autogen.sh
+          ./configure --prefix=${{ github.workspace }}/build
+          make
+          make install
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ${{ inputs.artifact-name }}
+          path: ${{ github.workspace }}/build
+          retention-days: 1
