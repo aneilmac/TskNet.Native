@@ -4,7 +4,7 @@ on:
   workflow_call:
   workflow_dispatch:
   push:
-    branches: ["main", "develop" ]
+    branches: ["develop"]
 
 env:
   BUILD_NUMBER: ${{ github.run_number }}
@@ -100,5 +100,5 @@ jobs:
       - name: Upload nupkg
         uses: actions/upload-artifact@v6
         with:
-          name: TskNet.Native-nupkg
+          name: TskNet.Native
           path: TskNet.Native/bin/Release/TskNet.Native.*.nupkg
