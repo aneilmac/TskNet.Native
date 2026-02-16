@@ -30,7 +30,7 @@
             <PackageCopyToOutput>true</PackageCopyToOutput>
             <TargetPath>runtimes\linux-x64\native\%(Filename)%(Extension)</TargetPath>
         </None>
-        <None Include="$(ROTODIR)licenses" Pack="true" PackagePath="licenses">
+        <None Include="$(ROTODIR)licenses\*" Pack="true" PackagePath="licenses">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
             <Visible>false</Visible>
             <PackageCopyToOutput>true</PackageCopyToOutput>
