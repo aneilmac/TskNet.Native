@@ -60,7 +60,6 @@ jobs:
         run: |
           ./bootstrap
           ./configure --prefix=${{ github.workspace }}/build \ 
-                      --host=x86_64-pc-linux-gnu --target=x86_64-pc-linux-gnu \
                       --enable-shared --disable-java \
                       --with-afflib=${{ github.workspace }}/build \
                       --with-libbfio=${{ github.workspace }}/build \
