@@ -24,7 +24,7 @@
     <ItemGroup>
         <None Include="$(ROOTDIR)README.md" Pack="true" PackagePath="\"/>
         <None Include="$(ROOTDIR)LICENSE.md" Pack="true" PackagePath="\"/>
-        <None Include="$(LIBDIR)*.so" Pack="true" PackagePath="runtimes\linux-x64\native">
+        <None Include="$(LIBDIR)*.so*" Pack="true" PackagePath="runtimes\linux-x64\native">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
             <Visible>false</Visible>
             <PackageCopyToOutput>true</PackageCopyToOutput>
