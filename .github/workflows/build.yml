@@ -1,6 +1,11 @@
-name: Tsk-Net - Build & Pack
+name: TskNet.Native - Build & Pack
 
-on: [push]
+on:
+  workflow_call:
+  workflow_dispatch:
+  push:
+    branches: [ "develop" ]
+
 env:
   BUILD_NUMBER: ${{ github.run_number }}
 jobs:
@@ -48,18 +53,20 @@ jobs:
         uses: actions/download-artifact@v5
         with:
           merge-multiple: true
-          path: dependencies
+          path: build
       - name: install_dependencies
         run: sudo apt-get -y install libcurl4-openssl-dev
       - name: Generate sleuthkit
         run: |
           ./bootstrap
-          ./configure --prefix=${{ github.workspace }}/build \
-                      --with-afflib=${{ github.workspace }}/dependencies \
-                      --with-libbfio=${{ github.workspace }}/dependencies \
-                      --with-libvhdi=${{ github.workspace }}/dependencies \
-                      --with-libvmdk=${{ github.workspace }}/dependencies \
-                      --with-libvslvm=${{ github.workspace }}/dependencies
+          ./configure --prefix=${{ github.workspace }}/build \ 
+                      --enable-shared=true --enable-static=false \
+                      --disable-java \
+                      --with-afflib=${{ github.workspace }}/build \
+                      --with-libbfio=${{ github.workspace }}/build \
+                      --with-libvhdi=${{ github.workspace }}/build \
+                      --with-libvmdk=${{ github.workspace }}/build \
+                      --with-libvslvm=${{ github.workspace }}/build
           make
           make install
       - name: Upload nupkg
