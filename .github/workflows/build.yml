@@ -4,7 +4,7 @@ on:
   workflow_call:
   workflow_dispatch:
   push:
-    branches: [ "develop" ]
+    branches: ["main", "develop" ]
 
 env:
   BUILD_NUMBER: ${{ github.run_number }}
