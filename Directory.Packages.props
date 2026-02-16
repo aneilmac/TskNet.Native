@@ -3,6 +3,6 @@
         <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
     </PropertyGroup>
     <ItemGroup>
-       <PackageVersion Include="GitVersion.MsBuild" Version="6.5.1" />
+       <PackageVersion Include="GitVersion.MsBuild" Version="6.6.0" />
     </ItemGroup>
 </Project>
