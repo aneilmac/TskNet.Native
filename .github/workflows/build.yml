@@ -52,7 +52,6 @@ jobs:
       - name: install_dependencies
         run: sudo apt-get -y install libcurl4-openssl-dev
       - name: Generate sleuthkit
-        working-directory: ./sleuthkit
         run: |
           ./bootstrap
           ./configure --prefix=${{ github.workspace }}/build \
