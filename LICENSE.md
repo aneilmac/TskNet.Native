@@ -67,7 +67,7 @@ https://github.com/libyal/libvslvm/blob/main/COPYING.LESSER
 ## libbfio
 
 License: GNU Lesser General Public License v3.0 (LGPL-3.0)  
-Copyright: Copyright (C) 2009-2025, Joachim Metz <joachim.metz@gmail.com>
+Copyright: Copyright (C) 2009-2025, Joachim Metz <joachim.metz@gmail.com>  
 Project: https://github.com/libyal/libbfio
 
 License texts:
