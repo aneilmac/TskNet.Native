@@ -8,15 +8,12 @@ For the actual bindings use the [TskNet.FFI][TskNet.FFI] module.
 
 The contents of the repository are "Copyright (c) 2026 aneilmac".
 
-Source code: Licensed under the [MIT License][license].
-
-The library requires usage of [Sleuthkit][TSK] which
-is distributed under several licences [described here][TSKLicences].
+See the [Licence][license] for various licensing details.
 
 ---
 
 [TskNet.FFI]: https://github.com/aneilmac/TskNet.FFI "TskNet.FFI"
-[license]: LICENSE "Project License"
+[license]: LICENSE.md "Project License"
 [ClangSharp]: https://github.com/dotnet/ClangSharp "ClangSharp"
 [TSK]: https://sleuthkit.org/sleuthkit/ "sleuthkit.org"
 [TSKLicences]: https://github.com/sleuthkit/sleuthkit/tree/develop/licenses "Sleuthkit licences"
