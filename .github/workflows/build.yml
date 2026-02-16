@@ -96,7 +96,7 @@ jobs:
       - name: Build
         run: dotnet build -c ${{ matrix.configuration }}
       - name: Publish
-        run: dotnet pack -c ${{ matrix.configuration }} --no-build src/TskNet.Native
+        run: dotnet pack -c ${{ matrix.configuration }} --no-build TskNet.Native
       - name: Upload nupkg
         uses: actions/upload-artifact@v6
         with:
