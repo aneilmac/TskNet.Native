@@ -1,4 +1,4 @@
-﻿name: Publish
+﻿name: TskNet.Native - Publish
 
 on:
   workflow_dispatch:

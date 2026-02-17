@@ -68,6 +68,9 @@ jobs:
                       --with-libvslvm=${{ github.workspace }}/artifacts
           make
           make install
+      - name: Tweak rpath
+        run: |
+          find ${{ github.workspace }}/artifacts -type f -name "*.so*" -exec patchelf --set-rpath '$ORIGIN' {} \;
       - name: Upload nupkg
         uses: actions/upload-artifact@v6
         with:
