@@ -70,9 +70,9 @@ jobs:
           make install
       - name: Tweak rpath
         run: |
-          find ${{ github.workspace }}/artifacts -type f -name "*.so*" -exec sh -c '
-            file "$1" | grep -q ELF && patchelf --set-rpath "$ORIGIN" "$1"
-          ' sh {} \;
+          find artifacts -type f -name "*.so*" -exec sh -c '
+            file "$1" | grep -q ELF && patchelf --set-rpath "$2" "$1"
+          ' sh {} '$ORIGIN' \;
       - name: Upload nupkg
         uses: actions/upload-artifact@v6
         with:
