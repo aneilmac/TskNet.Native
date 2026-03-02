@@ -50,7 +50,7 @@ jobs:
           repository: sleuthkit/sleuthkit
           ref: sleuthkit-4.14.0
       - name: Download artifacts
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@v8
         with:
           merge-multiple: true
           path: artifacts
@@ -90,7 +90,7 @@ jobs:
         with:
           fetch-depth: 0
       - name: Download artifacts
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@v8
         with:
           name: libtsk
           path: libtsk
