@@ -74,7 +74,7 @@ jobs:
             file "$1" | grep -q ELF && patchelf --set-rpath "$2" "$1"
           ' sh {} '$ORIGIN' \;
       - name: Upload nupkg
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: libtsk
           path: ${{ github.workspace }}/artifacts
@@ -103,7 +103,7 @@ jobs:
       - name: Publish
         run: dotnet pack -c ${{ matrix.configuration }} --no-build TskNet.Native
       - name: Upload nupkg
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: TskNet.Native
           path: TskNet.Native/bin/Release/TskNet.Native.*.nupkg
