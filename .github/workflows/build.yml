@@ -45,7 +45,7 @@ jobs:
     needs: [build-aff, build-vhdi, build-vmdk, build-slvm, build-bfio]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
         with:
           repository: sleuthkit/sleuthkit
           ref: sleuthkit-4.14.0
@@ -86,7 +86,7 @@ jobs:
         os: [ ubuntu-latest ]
         configuration: [ Release ]
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
         with:
           fetch-depth: 0
       - name: Download artifacts
